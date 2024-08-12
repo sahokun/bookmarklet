@@ -45,7 +45,7 @@ javascript: (function () {
     try {
         const currentUrl = window.location.href;
 
-        if (currentUrl.startsWith("https://www.mycryptoheroes.net/battles/")) {
+        if (/https:\/\/www\.mycryptoheroes\.net\/(?:[a-z]{2}\/)?battles\//.test(currentUrl)) {
             let imgTag = document.querySelector('.unit__heroImage--original img');
             if (!imgTag) {
                 imgTag = document.querySelector('.unit__heroImage img');
@@ -81,13 +81,13 @@ javascript: (function () {
             console.log(resultString);
 
             writeClipboard(resultString);
-        } else if (currentUrl.startsWith("https://www.mycryptoheroes.net/templates/duel/")) {
+        } else if (/https:\/\/www\.mycryptoheroes\.net\/(?:[a-z]{2}\/)?templates\/duel\//.test(currentUrl)) {
             const outerSkillsDiv = document.querySelector('.skills');
 
             const passiveSkillElement = outerSkillsDiv.querySelector('.skill.passiveSkill');
             const passiveSkillName = passiveSkillElement ? passiveSkillElement.querySelector('h4 span').textContent.trim() : null;
 
-            const skill = window.__NUXT__.state.skill.masters.find(skill => skill.name.en === passiveSkillName);
+            const skill = window.__NUXT__.state.skill.masters.find(skill =>　skill.name.ja === passiveSkillName ||skill.name.en === passiveSkillName);
             const hero = window.__NUXT__.state.hero.masters.find(hero => hero.passive === skill.skillId);
             const heroId = hero.heroType;
 
