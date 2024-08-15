@@ -9,7 +9,6 @@ c),e+=a.amount,d.push(`\u7d20\u6750ID: ${b}, \u5fc5\u8981\u6570: ${c}, \u8cfc\u5
 
 ## 動作確認環境
 
-- iOS Chrome
 - Windows Chrome
 
 ## 使い方
