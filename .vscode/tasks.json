@@ -4,12 +4,22 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Minify JavaScript with Closure Compiler",
+            "label": "Minify(mch-team-code)",
             "type": "shell",
             "command": "npx google-closure-compiler --js=mch-team-code-bookmarklet.js --js_output_file=mch-team-code-bookmarklet.min.js",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Minify(mch-craft-shortage))",
+            "type": "shell",
+            "command": "npx google-closure-compiler --js=mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage-bookmarklet.min.js",
+            "group": {
+                "kind": "build",
+                "isDefault": false
             },
             "problemMatcher": []
         }
