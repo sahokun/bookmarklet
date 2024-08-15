@@ -1,4 +1,4 @@
-javascript: (function () {
+javascript: (async function () {
   async function processMaterialList() {
     const materialList = document.querySelector('.craftMaterialList');
     const materialItems = materialList.querySelectorAll('.materialItem');
@@ -13,7 +13,7 @@ javascript: (function () {
       const requiredAmountElement = requiredAmountElements[0].querySelector('.amount');
       const requiredAmount = parseInt(requiredAmountElement.textContent.replace(/,/g, ''), 10);
 
-      const currentAmountElement = requiredAmountElements[1].querySelector('.amount.hasNotRequiredAmount');
+      const currentAmountElement = requiredAmountElements[1].querySelector('.amount');
       const currentAmount = parseInt(currentAmountElement.textContent.replace(/,/g, ''), 10);
 
       const shortage = requiredAmount - currentAmount;
