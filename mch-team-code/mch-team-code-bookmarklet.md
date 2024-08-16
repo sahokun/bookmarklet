@@ -38,6 +38,10 @@ d=w.find(g=>g.passive===n.find(l=>l.name.ja===b||l.name.en===b)?.skillId)?.heroT
 
 ![05](./05.jpg)
 
+## 制限事項
+
+- エクステ以外(素手など)があるとエラー
+
 ## CHANGELOG
 
 2024/08/13 テンプレート画面(チーム画面)対応
