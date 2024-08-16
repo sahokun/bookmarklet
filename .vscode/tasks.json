@@ -6,7 +6,7 @@
         {
             "label": "Minify(mch-team-code)",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-team-code-bookmarklet.js --js_output_file=mch-team-code-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-team-code-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --js=mch-team-code/mch-team-code-bookmarklet.js --js_output_file=mch-team-code/mch-team-code-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-team-code/mch-team-code-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -16,7 +16,7 @@
         {
             "label": "Minify(mch-craft-shortage))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-craft-shortage-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --js=mch-craft-shortage/mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -26,7 +26,7 @@
         {
             "label": "Minify(mch-lab-buyer))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-lab-buyer-bookmarklet.js --js_output_file=mch-lab-buyer-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab-buyer-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --js=mch-lab/mch-lab-buyer-bookmarklet.js --js_output_file=mch-lab/mch-lab-buyer-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-buyer-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -36,7 +36,7 @@
         {
             "label": "Minify(mch-lab-seller))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-lab-seller-bookmarklet.js --js_output_file=mch-lab-seller-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab-seller-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --js=mch-lab/mch-lab-seller-bookmarklet.js --js_output_file=mch-lab/mch-lab-seller-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-seller-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false

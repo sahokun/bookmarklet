@@ -5,7 +5,7 @@ javascript: (async function () {
     const SCALE_FACTOR_PERCENT = 1 / SCALE_FACTOR;
     const MAX_SCALE_FACTOR = 1000;
     const TOLERANCE_PERCENT = 0.001; // 0.1%
-    const LOOP_LIMIT = 20;
+    const LOOP_LIMIT = 10;
 
     const prices = await $nuxt.$store.$laboratoryService.getAllTokenPrices();
 
