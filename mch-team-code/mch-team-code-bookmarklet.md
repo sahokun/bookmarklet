@@ -19,9 +19,9 @@ d=w.find(g=>g.passive===n.find(l=>l.name.ja===b||l.name.en===b)?.skillId)?.heroT
 
 ## 使い方
 
-![01](./mch-team-code/01.jpg)
+![01](./01.jpg)
 
-![02](./mch-team-code/02.jpg)
+![02](./02.jpg)
 
 対応URL
 
@@ -32,11 +32,11 @@ d=w.find(g=>g.passive===n.find(l=>l.name.ja===b||l.name.en===b)?.skillId)?.heroT
 
 バトル画面の場合、EMAやオーラによる変化が含まれます。
 
-![03](./mch-team-code/03.jpg)
+![03](./03.jpg)
 
-![04](./mch-team-code/04.jpg)
+![04](./04.jpg)
 
-![05](./mch-team-code/05.jpg)
+![05](./05.jpg)
 
 ## CHANGELOG
 
