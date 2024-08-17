@@ -25,6 +25,7 @@ javascript: (async function () {
         }
 
         const amount = parseFloat(match[0].replace(/,/g, ''));
+        // console.log("所持量:", amount);
         return amount;
     }
 
@@ -80,14 +81,14 @@ javascript: (async function () {
 
         // 現在レートの取得
         var initialPrice = getSellerPrice(TOKEN_PRICES, materialId);
-        // console.log("Current price:", initialPrice);
+        // console.log("現在価格:", initialPrice);
 
         // 下限素材購入量の概算 = ((現在レート * 必要量) - 1) / 現在レート
         var lowerBound = Math.floor(((Math.floor(initialPrice * requiredAmount) - 1) / initialPrice) * SCALE_FACTOR) / SCALE_FACTOR;
         if (lowerBound < 0) {
             lowerBound = 0;
         }
-        // console.log("Estimated lower bound:", lowerBound);
+        // console.log("概算下限素材購入量:", lowerBound);
 
         // 希望売却素材量での価格取得
         var maxEstimate = await window.$nuxt.$store.$laboratoryService.estimateSaleAmount(materialId, requiredAmount * MAX_SCALE_FACTOR);
@@ -100,32 +101,32 @@ javascript: (async function () {
         var upperBound = requiredAmount;
         var i = 0;
         while (true) {
-            // console.log("Loop:", i + 1, "Upper bound:", upperBound, "Lower bound:", lowerBound, "Target:", targetPrice);
+            // console.log("ループ回数:", i + 1, "上限:", upperBound, "下限:", lowerBound, "目標:", targetPrice);
 
             // 中間値の計算
             let mid = Math.ceil(((upperBound + lowerBound) / 2) * SCALE_FACTOR) / SCALE_FACTOR;
             // 中間値での価格取得
             let midEstimate = await window.$nuxt.$store.$laboratoryService.estimateSaleAmount(materialId, mid * MAX_SCALE_FACTOR);
             let midPrice = midEstimate.amount;
-            // console.log("Mid:", mid, "Mid Price:", midPrice);
+            // console.log("中間値:", mid, "中間値の価格:", midPrice);
 
             if (midPrice === targetPrice) {
                 // 中間値の価格が目標価格と同じ場合、上限を更新
                 upperBound = mid;
-                // console.log(`lower the upper bound: ${mid}`);
+                // console.log(`中間値の価格が目標価格と同じなので上限を下げます。上限: ${mid}`);
             } else {
                 // 中間値の価格が目標価格より低い場合、下限を更新
                 lowerBound = mid;
-                // console.log(`raise the lower bound: ${mid}`);
+                // console.log(`中間値の価格が目標価格より低いので下限を上げます。下限: ${mid}`);
             }
 
             // 下限と上限が隣り合った場合、ループ終了
             let toleranceAmount = mid * TOLERANCE_PERCENT;
             const toleranceAmountWithScale = Math.ceil((SCALE_FACTOR_PERCENT + toleranceAmount + EPSILON) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
             const diff = Math.ceil(Math.abs(upperBound - lowerBound) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
-            // console.log(`Diff: ${diff}`, `Tolerance(${TOLERANCE_PERCENT * 100}%): ${toleranceAmountWithScale}`);
+            // console.log(`計算量差分: ${diff}`, `許容誤差(${TOLERANCE_PERCENT * 100}%): ${toleranceAmountWithScale}`);
             if (diff <= toleranceAmountWithScale) {
-                // console.log(`Within`);
+                // console.log(`許容誤差内になったため計算終了`);
                 break;
             }
 
