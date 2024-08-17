@@ -16,7 +16,7 @@
         {
             "label": "Minify(mch-craft-shortage))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-craft-shortage/mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE  --js=mch-craft-shortage/mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -26,7 +26,7 @@
         {
             "label": "Minify(mch-lab-buyer))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-lab/mch-lab-buyer-bookmarklet.js --js_output_file=mch-lab/mch-lab-buyer-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-buyer-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=mch-lab/mch-lab-buyer-bookmarklet.js --js_output_file=mch-lab/mch-lab-buyer-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-buyer-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
@@ -36,7 +36,7 @@
         {
             "label": "Minify(mch-lab-seller))",
             "type": "shell",
-            "command": "npx google-closure-compiler --js=mch-lab/mch-lab-seller-bookmarklet.js --js_output_file=mch-lab/mch-lab-seller-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-seller-bookmarklet.min.js",
+            "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=mch-lab/mch-lab-seller-bookmarklet.js --js_output_file=mch-lab/mch-lab-seller-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-seller-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
