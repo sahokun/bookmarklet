@@ -63,9 +63,9 @@ javascript: (async function () {
 
       const shortage = requiredAmount - currentAmount;
       if (shortage > 0) {
-        const purchaseEstimateRequired = await $nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, requiredAmount * 1000);
+        const purchaseEstimateRequired = await window.$nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, requiredAmount * 1000);
         totalEstimateRequired += purchaseEstimateRequired.amount;
-        const purchaseEstimateShortage = await $nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, shortage * 1000);
+        const purchaseEstimateShortage = await window.$nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, shortage * 1000);
         totalEstimateShortage += purchaseEstimateShortage.amount;
         results.push(`${materialName}, 不足数: ${shortage}(${purchaseEstimateShortage.amount}GUM), 必要数: ${requiredAmount}(${purchaseEstimateRequired.amount}GUM)`);
       }
