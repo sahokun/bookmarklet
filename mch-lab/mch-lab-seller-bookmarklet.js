@@ -12,7 +12,7 @@ javascript: (async function () {
     const TOKEN_PRICES = await $nuxt.$store.$laboratoryService.getAllTokenPrices();
 
     // 所持量取得
-    function getAmount(){
+    function getAmount() {
         const div = document.querySelector('div[data-v-2819963c].ammSwapModal__balance');
         const allP = div.querySelectorAll('p');
 
@@ -22,7 +22,7 @@ javascript: (async function () {
         const match = textContent.match(/[\d,]+(\.\d+)?/);
 
         if (!match) {
-         throw new Error("数値が見つかりませんでした。");   
+            throw new Error("数値が見つかりませんでした。");
         }
 
         const amount = parseFloat(match[0].replace(/,/g, ''));
@@ -35,15 +35,15 @@ javascript: (async function () {
         const targetDiv = document.querySelector('.ammSwapModal__balance');
 
         const newPElement = document.createElement('p');
-        newPElement.textContent = `最適売却量 : ${content}`; 
-        newPElement.classList.add('optimal-seller-amount'); 
+        newPElement.textContent = `最適売却量 : ${content}`;
+        newPElement.classList.add('optimal-seller-amount');
 
         const existingPElement = targetDiv.querySelector('p.optimal-seller-amount');
 
         if (existingPElement) {
             existingPElement.textContent = newPElement.textContent;
         } else {
-            targetDiv.prepend(newPElement); 
+            targetDiv.prepend(newPElement);
         }
     }
 
@@ -85,8 +85,8 @@ javascript: (async function () {
         console.log("現在価格:", initialPrice);
 
         // 下限素材購入量の概算 = ((現在レート * 必要量) - 1) / 現在レート
-        var lowerBound = Math.floor(((Math.floor(initialPrice * requiredAmount) -1) / initialPrice) * SCALE_FACTOR) / SCALE_FACTOR;
-        if(lowerBound < 0) {
+        var lowerBound = Math.floor(((Math.floor(initialPrice * requiredAmount) - 1) / initialPrice) * SCALE_FACTOR) / SCALE_FACTOR;
+        if (lowerBound < 0) {
             lowerBound = 0;
         }
         console.log("概算下限素材購入量:", lowerBound);
@@ -94,7 +94,7 @@ javascript: (async function () {
         // 希望売却素材量での価格取得
         var maxEstimate = await $nuxt.$store.$laboratoryService.estimateSaleAmount(materialId, requiredAmount * MAX_SCALE_FACTOR);
         var targetPrice = maxEstimate.amount;
-        if(targetPrice === 0){
+        if (targetPrice === 0) {
             throw new Error('1GUMに満たないため売却できません');
         }
         console.log("目標価格:", targetPrice);
@@ -125,14 +125,14 @@ javascript: (async function () {
             let toleranceAmount = mid * TOLERANCE_PERCENT;
             const toleranceAmountWithScale = Math.ceil((SCALE_FACTOR_PERCENT + toleranceAmount + EPSILON) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
             const diff = Math.ceil(Math.abs(upperBound - lowerBound) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
-            console.log(`計算量差分: ${diff}`, `許容誤差(${TOLERANCE_PERCENT*100}%): ${toleranceAmountWithScale}`);
+            console.log(`計算量差分: ${diff}`, `許容誤差(${TOLERANCE_PERCENT * 100}%): ${toleranceAmountWithScale}`);
             if (diff <= toleranceAmountWithScale) {
                 console.log(`許容誤差内になったため計算終了`);
                 break;
             }
 
             // ループ回数
-            if(i === LOOP_LIMIT - 1) {
+            if (i === LOOP_LIMIT - 1) {
                 alert("ループ回数上限を超えました。");
                 break;
             }
