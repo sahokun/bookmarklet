@@ -17,15 +17,15 @@ javascript: (async function () {
         const targetDiv = document.querySelector('.ammSwapModal__balance');
 
         const newPElement = document.createElement('p');
-        newPElement.textContent = `最適購入量 : ${content}`; 
-        newPElement.classList.add('optimal-purchase-amount'); 
+        newPElement.textContent = `最適購入量 : ${content}`;
+        newPElement.classList.add('optimal-purchase-amount');
 
         const existingPElement = targetDiv.querySelector('p.optimal-purchase-amount');
 
         if (existingPElement) {
             existingPElement.textContent = newPElement.textContent;
         } else {
-            targetDiv.prepend(newPElement); 
+            targetDiv.prepend(newPElement);
         }
     }
 
@@ -101,14 +101,14 @@ javascript: (async function () {
             let toleranceAmount = mid * TOLERANCE_PERCENT;
             const toleranceAmountWithScale = Math.ceil((SCALE_FACTOR_PERCENT + toleranceAmount + EPSILON) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
             const diff = Math.ceil(Math.abs(upperBound - lowerBound) * MAX_SCALE_FACTOR) / MAX_SCALE_FACTOR;
-            console.log(`計算量差分: ${diff}`, `許容誤差(${TOLERANCE_PERCENT*100}%): ${toleranceAmountWithScale}`);
+            console.log(`計算量差分: ${diff}`, `許容誤差(${TOLERANCE_PERCENT * 100}%): ${toleranceAmountWithScale}`);
             if (diff <= toleranceAmountWithScale) {
                 console.log(`許容誤差内になったため計算終了`);
                 break;
             }
 
             // ループ回数
-            if(i === LOOP_LIMIT - 1) {
+            if (i === LOOP_LIMIT - 1) {
                 alert("ループ回数上限を超えました。");
                 break;
             }
