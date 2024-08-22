@@ -14,7 +14,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Minify(mch-craft-shortage))",
+            "label": "Minify(mch-craft-shortage)",
             "type": "shell",
             "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE  --js=mch-craft-shortage/mch-craft-shortage-bookmarklet.js --js_output_file=mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-craft-shortage/mch-craft-shortage-bookmarklet.min.js",
             "group": {
@@ -24,7 +24,7 @@
             "problemMatcher": []
         },
         {
-            "label": "Minify(mch-lab-buyer))",
+            "label": "Minify(mch-lab-buyer)",
             "type": "shell",
             "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=mch-lab/mch-lab-buyer-bookmarklet.js --js_output_file=mch-lab/mch-lab-buyer-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-buyer-bookmarklet.min.js",
             "group": {
@@ -34,9 +34,19 @@
             "problemMatcher": []
         },
         {
-            "label": "Minify(mch-lab-seller))",
+            "label": "Minify(mch-lab-seller)",
             "type": "shell",
             "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=mch-lab/mch-lab-seller-bookmarklet.js --js_output_file=mch-lab/mch-lab-seller-bookmarklet.min.js && sed -i '1s/^/javascript:/' mch-lab/mch-lab-seller-bookmarklet.min.js",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Minify(lottery)",
+            "type": "shell",
+            "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=chaincolosseumphoenix/lottery-bookmarklet.js --js_output_file=chaincolosseumphoenix/lottery-bookmarklet.min.js && sed -i '1s/^/javascript:/' chaincolosseumphoenix/lottery-bookmarklet.min.js",
             "group": {
                 "kind": "build",
                 "isDefault": false
