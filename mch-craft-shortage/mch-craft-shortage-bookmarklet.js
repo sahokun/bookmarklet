@@ -31,6 +31,10 @@ javascript: (async function () {
     return itemName;
   }
 
+  function weiToGUM(wei) {
+    return parseFloat(wei) / Math.pow(10, 18);
+  }
+
   async function processMaterialList() {
     const extensionName = getName();
     const materialList = document.querySelector('.craftMaterialList');
@@ -64,10 +68,10 @@ javascript: (async function () {
       const shortage = requiredAmount - currentAmount;
       if (shortage > 0) {
         const purchaseEstimateRequired = await window.$nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, requiredAmount * 1000);
-        totalEstimateRequired += purchaseEstimateRequired.amount;
+        totalEstimateRequired += weiToGUM(purchaseEstimateRequired.wei);
         const purchaseEstimateShortage = await window.$nuxt.$store.$laboratoryService.estimatePurchaseAmount(materialId, shortage * 1000);
-        totalEstimateShortage += purchaseEstimateShortage.amount;
-        results.push(`${materialName}, 不足数: ${shortage}(${purchaseEstimateShortage.amount}GUM), 必要数: ${requiredAmount}(${purchaseEstimateRequired.amount}GUM)`);
+        totalEstimateShortage += weiToGUM(purchaseEstimateShortage.wei);
+        results.push(`${materialName}, 不足数: ${shortage}(${weiToGUM(purchaseEstimateShortage.wei)}GUM), 必要数: ${requiredAmount}(${weiToGUM(purchaseEstimateRequired.wei)}GUM)`);
       }
     }
 
