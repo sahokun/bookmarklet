@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "davidanson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "timonwong.shellcheck",
+    "gruntfuggly.todo-tree",
+    "alefragnani.bookmarks",
+    "VisualStudioExptTeam.vscodeintellicode"
+  ]
+}

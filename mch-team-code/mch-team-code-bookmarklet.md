@@ -23,14 +23,13 @@ d=w.find(g=>g.passive===n.find(l=>l.name.ja===b||l.name.en===b)?.skillId)?.heroT
 
 ![02](./02.jpg)
 
-対応URL
+対応 URL
 
 - `https://www.mycryptoheroes.net/{xx/}battles/xxxxxxxx`
 - `https://www.mycryptoheroes.net/{xx/}templates/duel/x?`
 - `https://www.mycryptoheroes.net/{xx/}templates/duel/x/x?`
 
-
-バトル画面の場合、EMAやオーラによる変化が含まれます。
+バトル画面の場合、EMA やオーラによる変化が含まれます。
 
 ![03](./03.jpg)
 
