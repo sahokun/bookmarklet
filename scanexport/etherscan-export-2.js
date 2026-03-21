@@ -28,8 +28,10 @@ javascript:(function() {
         }, 3000);
     }
 
-    // LocalStorageからイーサリアムアドレスを取得
+    // LocalStorageからイーサリアムアドレスと日付を取得
     var ethAddress = window.localStorage.getItem('ethAddress');
+    var startDate = window.localStorage.getItem('ethStartDate');
+    var endDate = window.localStorage.getItem('ethEndDate');
 
     if (ethAddress) {
         // アドレス入力欄に値を設定
@@ -38,9 +40,13 @@ javascript:(function() {
             addressInput.value = ethAddress;
         }
 
-        // 日付範囲を設定
-        document.getElementById('ContentPlaceHolder1_txtstart_time').value = '12/31/2023';
-        document.getElementById('ContentPlaceHolder1_txtstart_time2').value = '1/1/2025';
+        // 日付範囲を設定（保存された日付がない場合は現在の年のデフォルト値を使用）
+        var currentYear = new Date().getFullYear();
+        var defaultStartDate = '1/1/' + currentYear;
+        var defaultEndDate = '1/1/' + (currentYear + 1);
+        
+        document.getElementById('ContentPlaceHolder1_txtstart_time').value = startDate || defaultStartDate;
+        document.getElementById('ContentPlaceHolder1_txtstart_time2').value = endDate || defaultEndDate;
 
         // チェックボックスを設定
         ['ContentPlaceHolder1_chkWithTx', 'ContentPlaceHolder1_chkPrivateTag'].forEach(function(id) {
@@ -49,9 +55,11 @@ javascript:(function() {
         });
 
         // 成功メッセージを表示
+        var displayStartDate = startDate || defaultStartDate;
+        var displayEndDate = endDate || defaultEndDate;
         showNotification(
             'フォームが入力されました。\nアドレス: ' + ethAddress + 
-            '\n日付範囲: 12/31/2023 - 1/1/2025',
+            '\n日付範囲: ' + displayStartDate + ' - ' + displayEndDate,
             'success'
         );
     } else {
