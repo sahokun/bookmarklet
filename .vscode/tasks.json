@@ -82,6 +82,16 @@
         "isDefault": false
       },
       "problemMatcher": []
-    }
+    },
+    {
+      "label": "Minify(etherscan-export)",
+      "type": "shell",
+      "command": "npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=scanexport/etherscan-export-1.js --js_output_file=scanexport/etherscan-export-1.min.js && sed -i '1s/^/javascript:/' scanexport/etherscan-export-1.min.js && npx google-closure-compiler --compilation_level=SIMPLE --language_out=ECMASCRIPT_NEXT --warning_level=VERBOSE --js=scanexport/etherscan-export-2.js --js_output_file=scanexport/etherscan-export-2.min.js && sed -i '1s/^/javascript:/' scanexport/etherscan-export-2.min.js",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
+    },
   ]
 }
