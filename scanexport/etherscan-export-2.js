@@ -45,8 +45,18 @@ javascript:(function() {
         var defaultStartDate = '1/1/' + currentYear;
         var defaultEndDate = '1/1/' + (currentYear + 1);
         
-        document.getElementById('ContentPlaceHolder1_txtstart_time').value = startDate || defaultStartDate;
-        document.getElementById('ContentPlaceHolder1_txtstart_time2').value = endDate || defaultEndDate;
+        function setDate(id, value) {
+            var input = document.getElementById(id);
+            if (!input) throw new Error('日付入力欄が見つかりません: ' + id);
+
+            input.value = value;
+            // 値の代入だけではページ側に変更が伝わらないため、イベントを通知する。
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        setDate('ContentPlaceHolder1_txtstart_time', startDate || defaultStartDate);
+        setDate('ContentPlaceHolder1_txtstart_time2', endDate || defaultEndDate);
 
         // チェックボックスを設定
         ['ContentPlaceHolder1_chkWithTx', 'ContentPlaceHolder1_chkPrivateTag'].forEach(function(id) {
