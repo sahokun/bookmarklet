@@ -29,11 +29,8 @@ npx google-closure-compiler --js=<ソース>.js --js_output_file=<ソース>.min
 ### ブランチと PR
 
 <!-- branch-model:begin -->
-- 既定のブランチは `main`（本番）。統合用の `develop` を持つ。
-- 作業はブランチを切り、`develop` への PR にする。squash merge で取り込み、develop の履歴には PR のタイトルだけが残る。
-- `develop` から `main` へはマージコミットで取り込む。squash や rebase にすると、2 つのブランチの履歴が別物になり、次の取り込みで同じ差分や衝突が繰り返し出るため。
-- `main` を直接直したとき（Dependabot のセキュリティ更新・緊急の修正）は、`main` を `develop` にマージし戻す。セキュリティ更新は常に既定のブランチ（main）に届く。
-- 管理者は `develop` に直接 push できる（ローカルでの検証用）。`main` には PR でしか入れない。
+- 既定のブランチは `main`。作業はブランチを切り、`main` への PR にする。
+- PR は squash merge で取り込む。main の履歴には PR のタイトルだけが 1 コミットとして残る。
 <!-- branch-model:end -->
 - PR のタイトルは Conventional Commits（`feat: ...`・`fix: ...` など）で、変更の内容が 1 行で分かるように書く。
 - PR がマージされたら、作業ブランチは自動で削除される。
